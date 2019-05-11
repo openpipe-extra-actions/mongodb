@@ -1,0 +1,9 @@
+_libraries:
+    - .
+
+start:
+    - write to mongodb:
+        db_name: openpipe   # DB Name
+        collection: my_collection
+        url: localhost:27017
+        buffer_size: 100
