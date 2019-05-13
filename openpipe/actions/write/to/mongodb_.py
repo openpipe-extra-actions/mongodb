@@ -8,8 +8,8 @@ from openpipe.pipeline.engine import ActionRuntime
 class Action(ActionRuntime):
 
     required_config = """
-    db_name: openpipe   # DB Name
-    collection:         # Collection name
+    db_name:                # DB Name
+    collection:             # Collection name
     """
 
     optional_config = """
@@ -26,12 +26,14 @@ class Action(ActionRuntime):
         self.data_buffer = []
 
     def on_input(self, item):
+        print("GOT SOMETHING")
         data_buffer = self.data_buffer
         data_buffer.append(item)
         if len(data_buffer) == self.buffer_size:
-            self.fush_buffer()
+            self.flush_buffer()
 
     def on_finish(self, reason):
+        print("GOT END")
         self.flush_buffer()
 
     def flush_buffer(self):
