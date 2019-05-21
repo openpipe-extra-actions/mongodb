@@ -26,14 +26,12 @@ class Action(ActionRuntime):
         self.data_buffer = []
 
     def on_input(self, item):
-        print("GOT SOMETHING")
         data_buffer = self.data_buffer
         data_buffer.append(item)
         if len(data_buffer) == self.buffer_size:
             self.flush_buffer()
 
     def on_finish(self, reason):
-        print("GOT END")
         self.flush_buffer()
 
     def flush_buffer(self):
