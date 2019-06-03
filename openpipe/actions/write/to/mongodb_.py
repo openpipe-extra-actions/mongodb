@@ -27,7 +27,7 @@ class Action(ActionRuntime):
 
     def on_input(self, item):
         data_buffer = self.data_buffer
-        data_buffer.append(item)
+        data_buffer.append(item.copy()) # Peform a copy because we don't want the original object _id changed
         if len(data_buffer) == self.buffer_size:
             self.flush_buffer()
 
