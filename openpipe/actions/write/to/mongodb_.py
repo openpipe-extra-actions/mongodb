@@ -35,5 +35,7 @@ class Action(ActionRuntime):
         self.flush_buffer()
 
     def flush_buffer(self):
-        self._collection.insert(self.data_buffer)
+        if self.data_buffer:
+            result = self._collection.insert(self.data_buffer)
+            self.put(result)
         self.data_buffer = []
